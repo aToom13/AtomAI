@@ -1,0 +1,9 @@
+/__pycache__
+data/
+train_sft.py
+*.pth
+.env
+.venv
+venv/
+.DS_Store
+*.pyc
