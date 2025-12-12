@@ -1,6 +1,6 @@
 # AtomAI
 
-AtomAI, sıfırdan eğitilen ve ince ayar (fine-tuning) yapılan, matematik odaklı bir Dil Modeli (LLM) projesidir. Proje, kendi GPT mimarisini (`AtomAIBase`) kullanır ve PyTorch tabanlıdır.
+AtomAI, sıfırdan eğitilen ve ince ayar (fine-tuning) yapılan, matematik odaklı bir Dil Modeli (LLM) projesidir. Proje, kendi AI mimarisini (`AtomAIBase`) kullanır ve PyTorch tabanlıdır.
 
 ## Proje Yapısı
 
