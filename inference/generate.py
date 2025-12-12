@@ -1,9 +1,14 @@
 import torch
 from torch.nn import functional as F
 from transformers import AutoTokenizer
-from model import AtomAIBase, GPTConfig
 import argparse
 import os
+import sys
+
+# Add project root to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from shared.model import AtomAIBase, GPTConfig
 
 # TPU/Device Setup
 try:

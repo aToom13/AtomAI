@@ -1,9 +1,13 @@
+import sys
+import os
+
+# Add project root to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
 from transformers import AutoTokenizer
-import os
-import sys
 import gc
 import numpy as np
 from tqdm import tqdm
@@ -20,7 +24,7 @@ except ImportError:
     TPU_AVAILABLE = False
     print("TPU not detected. Falling back to CPU/GPU.")
 
-from model import AtomAIBase, GPTConfig
+from shared.model import AtomAIBase, GPTConfig
 
 # Configuration
 BATCH_SIZE = 4 # Reduced for local 4GB GPU
@@ -29,8 +33,8 @@ MAX_ITERS = 15000
 # 10k might take too long, 5k is a good start
 EVAL_INTERVAL = 100
 LEARNING_RATE = 3e-4
-DATA_FILE = "./data/openwebmath_subset.txt"
-BIN_FILE = "./data/train.bin"
+DATA_FILE = os.path.join(os.path.dirname(__file__), "../data/openwebmath_subset.txt")
+BIN_FILE = os.path.join(os.path.dirname(__file__), "../data/train.bin")
 
 def get_device():
     if TPU_AVAILABLE:
@@ -186,7 +190,7 @@ def main():
     print("Training finished.")
     
     if not TPU_AVAILABLE or xm.is_master_ordinal():
-        model_path = "atomai_base_model_tpu.pth"
+        model_path = os.path.join(os.path.dirname(__file__), "../atomai_base_model_tpu.pth")
         if TPU_AVAILABLE:
             xm.save(model.state_dict(), model_path)
         else:

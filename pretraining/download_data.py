@@ -3,7 +3,7 @@ import argparse
 from datasets import load_dataset
 import tqdm
 
-def download_data(output_dir="./data", max_docs=100000):
+def download_data(output_dir=os.path.join(os.path.dirname(__file__), "../data"), max_docs=100000):
     """
     Downloads a subset of OpenWebMath dataset to local disk.
     """
